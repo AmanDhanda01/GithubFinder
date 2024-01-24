@@ -7,7 +7,7 @@ var user = "";
 button.addEventListener("click",async (e) =>{
     e.preventDefault();
     const username = document.querySelector("#input").value;
-    const res = await fetch("http://localhost:5000/search",{
+    const res = await fetch("/search",{
       method:"POST",
       headers: {
         "Content-Type": "application/json",
@@ -111,7 +111,7 @@ const appendPagination = (repoNumber) =>{
 }
 
 const fetchMoreRepos = async (page) =>{
-     const response = await fetch(`http://localhost:5000/navigate/${user}/${page}`);
+     const response = await fetch(`/navigate/${user}/${page}`);
      const newRepo = await response.json();
      console.log(newRepo);
      appendRepos(newRepo.repos);
